@@ -2,6 +2,7 @@ import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { useState, useEffect } from "react";
 import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 interface MarkdownViewProps {
     post: string;
 }
@@ -14,18 +15,17 @@ const MarkdownView = ({ post }: MarkdownViewProps) => {
 
     return (
         <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeRaw]}
+            remarkPlugins={[remarkGfm]} // Allows us to have embedded HTML tags in our markdown
             components={{
-                code({ inline, className, children, ...props }) {
+                code({ node, inline, className, children, ...props }) {
                     const match = /language-(\w+)/.exec(className || "");
                     return !inline && match ? (
-                        <SyntaxHighlighter language={match[1]} PreTag="div" {...props} style={style} remarkPlugins={[remarkGfm]}>
+                        <SyntaxHighlighter language={match[1]} PreTag="div" {...props} style={style}>
                             {String(children).replace(/\n$/, "")}
                         </SyntaxHighlighter>
                     ) : (
-                        <code className={className} {...props}>
-                            {children}
-                        </code>
+                        <code {...props}>{children}</code>
                     );
                 },
             }}
