@@ -14,6 +14,7 @@ const MarkdownView = ({ post }: MarkdownViewProps) => {
 
     return (
         <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
             components={{
                 code({ inline, className, children, ...props }) {
                     const match = /language-(\w+)/.exec(className || "");
