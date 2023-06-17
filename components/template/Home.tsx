@@ -1,9 +1,10 @@
 import Header from "../../components/organism/Header";
-import { Text, SimpleGrid, GridItem, Center, Heading, Tag, Flex, Grid, Spacer } from "@chakra-ui/react";
+import { Text, SimpleGrid, GridItem, Center, Heading, Tag, Flex, Image } from "@chakra-ui/react";
 import PostCard from "../../components/organism/PostCard";
 import { Post } from "../../types";
 import Head from "next/head";
 import { CATEGORY_LIST } from "../../constValiable";
+import Banner from "../../public/image/banner.png";
 
 const Home = (props: { posts: Post[]; onClickTag: Function }) => {
     return (
@@ -16,13 +17,15 @@ const Home = (props: { posts: Post[]; onClickTag: Function }) => {
             <main>
                 <Header />
                 <Center>
-                    <Flex width="90%" marginY={100} flexDirection={"column"}>
+                    <Flex width="90%" marginY={100} flexDirection="column">
                         <Center py="2rem">
-                            <Heading fontSize="6xl" py="2rem">
+                            <Image src={"../image/banner.png"} alt="thumb nail" borderRadius="lg" maxH={400} />
+                        </Center>
+                        <Center>
+                            <Heading fontSize="2xl" py="2rem">
                                 CATEGORIES.
                             </Heading>
                         </Center>
-
                         <Center gap={2} mb={2}>
                             {CATEGORY_LIST.slice(0, 4).map((category: string) => {
                                 return (
