@@ -1,8 +1,9 @@
 ---
 layout: post
 title: "[BOJ #9084] 동전 Python3"
-categories: algorithm
+category: algorithm
 author: JIHAK
+create_date: 2023-06-02
 preview: 기본적인 냅색 문제! 냅색 문제를 풀어본 적이 있다면 잘 기억해서 어렵지 않게 풀 수 있다. 
 image_url: "https://github.com/codelyst-blog/codelyst-blog-deprecate.github.io/assets/55094745/aa6ece51-00f3-4f63-8507-dac33c70a4e2"
 ---
