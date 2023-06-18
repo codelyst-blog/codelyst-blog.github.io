@@ -7,7 +7,7 @@ export default function PostCard(post: Post) {
         <Link href={`/${post.slug}`}>
             <Card maxW="sm">
                 <CardBody>
-                    <Image src={post.image_url} alt="thumb nail" borderRadius="lg" />
+                    <Image src={post.image_url} alt="thumb nail" borderRadius="lg" h={200} />
                     <Stack mt="6" spacing="3">
                         <Heading size="lg">{post.title}</Heading>
                         <Text>{post.preview}</Text>
