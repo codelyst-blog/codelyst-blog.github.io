@@ -16,7 +16,9 @@ export default function MenuIcon() {
             <MenuButton as={IconButton} aria-label="Options" icon={<IoMenuOutline size="1.3em" />} variant="outline" />
             <MenuList>
                 <MenuItem onClick={onPreparingToast}>About</MenuItem>
-                <MenuItem onClick={onPreparingToast}>Contact</MenuItem>
+                <MenuItem as="a" href="/contact">
+                    Contact
+                </MenuItem>
             </MenuList>
         </Menu>
     );

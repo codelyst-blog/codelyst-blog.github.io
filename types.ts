@@ -8,3 +8,13 @@ export type Post = {
     slug: string;
     category: string;
 };
+
+export type Profile = {
+    name: string;
+    preview: string;
+    image_url: string;
+    job: string;
+    github_url: string;
+    content: string;
+    slug: string;
+};

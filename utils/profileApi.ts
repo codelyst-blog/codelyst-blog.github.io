@@ -2,16 +2,15 @@ import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
 
-const postsDirectory = join(process.cwd(), "_posts");
+const profilesDirectory = join(process.cwd(), "_profiles");
 
-export function getPostSlugs() {
-    console.log(postsDirectory);
-    return fs.readdirSync(postsDirectory);
+export function getProfileSlugs() {
+    return fs.readdirSync(profilesDirectory);
 }
 
-export function getPostBySlugs(slug: string, fields: string[] = []) {
+export function getProfileBySlugs(slug: string, fields: string[] = []) {
     const realSlug = slug.replace(/\.md$/, "");
-    const fullPath = join(postsDirectory, `${realSlug}.md`);
+    const fullPath = join(profilesDirectory, `${realSlug}.md`);
     const fileContents = fs.readFileSync(fullPath, "utf8");
 
     const { data, content } = matter(fileContents);
@@ -36,10 +35,8 @@ export function getPostBySlugs(slug: string, fields: string[] = []) {
     return items;
 }
 
-export function getAllPosts(fields: string[] = []) {
-    const slugs = getPostSlugs();
-    const posts = slugs
-        .map((slug) => getPostBySlugs(slug, fields))
-        .sort((post1, post2) => (new Date(post1.create_date) > new Date(post2.create_date) ? -1 : 1));
+export function getAllProfiles(fields: string[] = []) {
+    const slugs = getProfileSlugs();
+    const posts = slugs.map((slug) => getProfileBySlugs(slug, fields));
     return posts;
 }
