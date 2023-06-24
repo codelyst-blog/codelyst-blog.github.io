@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /exclude
+
+# Host
+Host: https://codelyst-blog.github.io/
+
+# Sitemaps
+Sitemap: https://codelyst-blog.github.io/sitemap.xml
