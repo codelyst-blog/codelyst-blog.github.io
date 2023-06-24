@@ -12,6 +12,7 @@ const Home = (props: { posts: Post[]; onClickTag: Function }) => {
             <Head>
                 <title>CodeLyst</title>
                 <meta name="description" content="Codelyst 팀 블로그입니다." />
+                <meta name="google-site-verification" content="G9K7apTa4HjEtsjnsZQ1Rc6uoG57I8eh2S0stJmx9NE" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main>
