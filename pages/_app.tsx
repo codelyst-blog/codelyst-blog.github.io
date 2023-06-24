@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     return (
         <>
             <Head>
-                <meta name="google-site-verification" content="YxxIg5MPg5-Cy29EpQEA393CH_ts8QR6zeLEBmUg8wQ" />
+                <meta name="google-site-verification" content="G9K7apTa4HjEtsjnsZQ1Rc6uoG57I8eh2S0stJmx9NE" />
             </Head>
             <ChakraProvider theme={theme}>
                 <Fonts />
