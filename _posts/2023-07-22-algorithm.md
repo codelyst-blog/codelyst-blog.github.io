@@ -4,8 +4,8 @@ title: "[BOJ #1007] 벡터매칭 Python3"
 category: algorithm
 author: jihak
 create_date: "2023-06-02"
-preview: 기본적인 냅색 문제! 냅색 문제를 풀어본 적이 있다면 잘 기억해서 어렵지 않게 풀 수 있다.
-image_url: "https://user-images.githubusercontent.com/48908552/255297969-47c132e0-75e5-4dfb-8be3-93c95d6488db.png2"
+preview: 브루트포스 문제이지만 진짜로 전부 다 하면 안되고 벡터의 성질을 이용해서 푸는 문제
+image_url: "https://user-images.githubusercontent.com/48908552/255297969-47c132e0-75e5-4dfb-8be3-93c95d6488db.png"
 ---
 
 ### 링크
