@@ -5,7 +5,7 @@ category: AWS
 author: jihak
 create_date: "2023-06-23"
 preview: serverless framework 사용방법 
-image_url: "https://user-images.githubusercontent.com/48908552/257055886-e80275ab-0782-4239-9599-2ceabbbeb880.png"
+image_url: "https://user-images.githubusercontent.com/48908552/257203517-2ca921b7-f181-40fe-834a-f0883b0a303e.png"
 ---
 
 <br>
