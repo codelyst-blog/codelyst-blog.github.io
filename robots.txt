@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: http://codelyst-blog.github.io/sitemap.xml
