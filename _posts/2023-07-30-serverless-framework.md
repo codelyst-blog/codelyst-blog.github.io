@@ -3,7 +3,7 @@ layout: post
 title: "Serverless Framework 설치, 사용방법"
 category: AWS
 author: jihak
-create_date: "2023-06-23"
+create_date: "2023-07-30"
 preview: serverless framework 사용방법 
 image_url: "https://user-images.githubusercontent.com/48908552/257203517-2ca921b7-f181-40fe-834a-f0883b0a303e.png"
 ---
