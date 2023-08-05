@@ -2,12 +2,36 @@ import { Center, Flex, Heading, Image, Spacer, Tag, Text } from "@chakra-ui/reac
 import { Post } from "../../types";
 import Header from "../organism/Header";
 import MarkDownView from "../organism/MarkDownView";
+import { NextSeo } from 'next-seo';
 import "github-markdown-css/github-markdown-light.css";
 
 const PostView = (post: Post) => {
     return (
         <>
-            <Header />
+            <NextSeo
+            title={post.title}
+            description={post.preview}
+            openGraph={{
+                title: post.title,
+                locale: "ko_KR", 
+                description: post.preview,
+                siteName: 'CodeLyst',
+                type: 'article',
+                article: {
+                    publishedTime: post.create_date+'T12:00:00Z',
+                    section: post.category,
+                    tags: [],
+                  },
+                images: [
+                    {
+                      url: post.image_url,
+                      alt: post.title,
+                    },
+                ],
+              }}
+            />
+            <Header/>
+            
             <Center>
                 <Flex width={"90%"} maxW={700} flexDirection={"column"} my={100}>
                     <Center mb={50}>
