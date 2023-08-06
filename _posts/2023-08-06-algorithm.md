@@ -4,7 +4,7 @@ title: "[BOJ #14500] 테르토미노 Python3"
 category: algorithm
 author: kira
 create_date: "2023-08-06"
-preview: 브루트포스 문제이지만 진짜로 전부 다 하면 안되고 벡터의 성질을 이용해서 푸는 문제
+preview: 구현 문제처럼 보이지만, DFS를 이용해 케이스를 나눈다면 간단하게 풀 수 있는 문제
 image_url: "https://user-images.githubusercontent.com/48908552/255297969-47c132e0-75e5-4dfb-8be3-93c95d6488db.png"
 ---
 
