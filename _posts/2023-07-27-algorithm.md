@@ -5,7 +5,7 @@ category: algorithm
 author: kritias
 create_date: "2023-07-27"
 preview: 트리? 그리디? 수학? 패턴 파악이 필요한 그래프 문제
-image_url: "https://github.com/codelyst-blog/codelyst-blog.github.io/assets/50093609/57af98b5-81f4-4378-9a93-aecf8a55aaa1"
+image_url: "https://github.com/codelyst-blog/codelyst-blog.github.io/assets/54790133/fba9a2db-ea0b-44d8-aa89-180606a7741c"
 ---
 
 ### 링크
