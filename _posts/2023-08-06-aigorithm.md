@@ -5,7 +5,7 @@ category: algorithm
 author: kritias
 create_date: "2023-08-06"
 preview: 특정 조건의 소수 쌍을 빠르게 찾는 방법
-image_url: "https://github.com/codelyst-blog/codelyst-blog.github.io/assets/50093609/906c44a4-baa7-45d2-877c-818ac53540c1"
+image_url: "https://github.com/codelyst-blog/codelyst-blog.github.io/assets/54790133/700d9cb4-8846-4a60-8250-0591bc5ebe09"
 ---
 
 ### 링크
