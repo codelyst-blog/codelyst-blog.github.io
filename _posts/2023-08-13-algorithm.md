@@ -1,118 +1,116 @@
 ---
 layout: post
-title: "[BOJ #3228] PIZZA c++"
+title: "[BOJ #22358] 스키장 c++"
 category: algorithm
-author: kritias
+author: kira
 create_date: "2023-08-13"
-preview:  \#거리비교 \#브루트포스 \#조합
-image_url: "https://github.com/codelyst-blog/codelyst-blog.github.io/assets/50093609/56ab037f-09d3-44ee-be71-e5194a8bc239"
+preview: 케이스를 나누어 풀면 쉬운 그래프 문제
+image_url: "https://github.com/codelyst-blog/codelyst-blog.github.io/assets/54790133/0eebd4f8-91e6-4a41-b2d6-b4ac005c41f9"
 ---
 
 ### 링크
 
-<a href= "https://www.acmicpc.net/problem/3228">https://www.acmicpc.net/problem/3228</a>
+<a href= "https://www.acmicpc.net/problem/22358">https://www.acmicpc.net/problem/22358</a>
 
 <br>
 
 ### 문제
 
-Picko는 반경 R만큼 배달할 수 있는 피자집을 K개 만큼 차리려고 한다.  
-
-피자집이 들어설 수 있는 후보지의 개수 M과 각 후보지의 2차원 좌표 (X, Y)가 주어지고,  
-
-피자를 시켜먹을 집들의 개수 N과 각 집의 2차원 좌표와 사는 사람의 수 (X, Y, S)가 주어질 때,  
-
-적절한 위치에 피자집들을 차려서 커버할 수 있는 사람들의 최댓값을 구하는 프로그램을 작성하시오.
+당신은 친구들과 함께 스키를 타러 스키장에 왔다. 스키장에는 일정 고도마다 중간 지점이 설치되어 있다. 중간 지점은 총 $N$개 있으며, 고도가 감소하는 순서대로 1번부터 $N$번까지 번호가 매겨져 있다. 즉 가장 높은 지점이 1번 지점, 가장 낮은 지점이 $N$번 지점이다. 현재 당신은 $S$번 지점에 친구들과 함께 있다. 당신의 친구들은 각자 자유롭게 스키를 탄 이후, 끝나면 $T$번 지점에 모이기로 약속했다. 스키장에는 $M$개의 코스가 있다. 각 코스는 $a_i$번 지점에서 $b_i$번 지점 방향으로 이어지며, 코스에 진입하면 $t_i$시간 동안 스키를 탈 수 있다. 코스는 항상 고도가 감소하는 방향으로 이어진다. 즉, $a_i < b_i$를 만족한다. 또한, 각 코스에는 스키 리프트가 있다. 스키 리프트는 코스와는 반대 방향으로, 고도가 증가하는 방향으로 이어진다. 즉, 스키 리프트를 타면 $b_i$번 지점에서 $a_i$번 지점으로 이동할 수 있다. 스키 리프트는 최대 $K$번 탑승할 수 있다. 당신은 스키 코스와 리프트만을 사용해서 $T$번 지점까지 가되, 스키를 타는 시간을 최대화하려고 한다. 리프트를 타는 시간은 스키를 타는 시간에 포함되지 않는다. 코스의 정보가 주어질 때, 최대 몇 시간 동안 스키를 탈 수 있을지 구하여라.
 
 <br>
 
 ### 입력
 
-첫째 줄에 K (1이상 10이하), R (1이상 50이하)이 주어진다. 
-
-두 번째 줄에 M (K이상 20이하)가 주어진다.  
-
-다음 줄부터 M개의 줄에 X, Y가 주어진다. (각각 절댓값 1000이하)  
-
-다음 줄에 N (1이상 100이하)가 주어진다.
-
-다음 줄부터 N개의 줄에 X, Y, S가 주어진다. (X, Y는 각각 절댓값 1000이하, S는 1이상 100이하)  
-
-동일한 위치에 둘 이상의 후보지가 주어지지 않는다.
+첫 번째 줄에 다섯 개의 정수 $N, M, K, S, T$ ( $1 \le N, M \le 10^5$, $0 \le K \le 10$, $1 \le S, T \le N$) 가 주어진다. 이후 $M$ 개의 줄에 각 코스의 정보가 세 개의 정수 $a_i, b_i, t_i$ ( $1 \le a_i < b_i \le N$, $1 \le t_i \le 10^9$) 로 주어진다. 서로 다른 두 지점을 잇는 코스는 최대 하나이다.
 
 <br>
 
 ### 출력
 
-한 줄로 문제의 정답을 출력한다.   
+최대 몇 시간 동안 스키를 탈 수 있는지 하나의 정수로 출력하라. 만약 어떻게 코스와 리프트를 선택해도 $T$번 지점으로 이동할 수 없다면 -1을 대신 출력하라.
+
 <br>
 
 ### 풀이
 
-먼저 후보지마다 도달할 수 있는 집을 graph에 저장한다.  
+항상 순방향인 경우 v(next) > cur(current)이며, 리프트를 타는 역방향의 경우  v(next) < cur(current)임을 이용해 아래와 같이 코드구성 가능
 
-next_permutation 함수에 1의 개수가 K, 전체 길이가 M인 binary vector를 돌려서 완전탐색한다.  
 
-각 루프마다 1로서 선택된 후보지가 도달할 수 있는 집들의 집합을 구하고, 집의 S값을 모두 더해 정답을 업데이트한다.  
 
-시간 복잡도에서의 dominant term이 $N\binom {M}{K} \leq 19,000,000$ 이므로 충분히 사용할 수 있는 방법이다.
-
-```c++
-
-#include <iostream>
-#include <cstdlib>
-#include <vector>
-#include <algorithm>
-#include <cmath>
-using namespace std;
-typedef pair<int, int> pii;
-
-#define X first
-#define Y second
-
-void init()
-{
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr);
-	cout.tie(nullptr);
-}
-
-int main(void) {
-	init();
-	int k, r, m, n;
-	cin >> k >> r;
-	r *= r;
-	cin >> m;
-	vector<pii> locs = vector<pii>(m);
-	for(int i = 0; i < m; i++) cin >> locs[i].X >> locs[i].Y;
-	cin >> n;
-	vector<pii> sols = vector<pii>(n);
-	vector<int> scores = vector<int>(n);
-	for(int i = 0; i < n; i++) cin >> sols[i].X >> sols[i].Y >> scores[i];
-
-	// 먼저, 각 loc 별로 도달할 수 있는 sol을 저장하자.
-	vector<vector<int>> graph = vector<vector<int>>(m);
-	for(int i = 0; i < m; i++) for(int j = 0; j < n; j++)
-	{
-		int dist = (locs[i].X - sols[j].X) * (locs[i].X - sols[j].X) + (locs[i].Y - sols[j].Y) * (locs[i].Y - sols[j].Y);
-		// cout << "loc[" << i << "] (" << locs[i].X << ", " << locs[i].Y << ") <-> sol[" << j << "] (" << sols[j].X << ", " << sols[j].Y << "): " << dist << '\n';
-		if (dist <= r) graph[i].push_back(j);
-	}
-
-	vector<int> perm = vector<int>(m, 0);
-	int ans = 0;
-	for(int i = m - 1; i >= m - k; i--) perm[i] = 1;
-	do {
-		vector<int> visit = vector<int>(n, false);
-		int res = 0;
-		for(int i = 0; i < m; i++) if(perm[i]) for(int e : graph[i]) visit[e] = true;
-		for(int i = 0; i < n; i++) res += visit[i] * scores[i];
-		ans = max(ans, res);
-	} while(next_permutation(perm.begin(), perm.end()));
-	cout << ans << '\n';
-	return 0;
-}
-
+1. 리프트 이용 횟수가 남았고(cnt < K), 역방향(v < cur)으로 움직이는 경우
+```
+if (cnt < K && v < cur) 
+	tmp = max(tmp, dp(v, cnt + 1));
 ```
 
-<br>
+2. 순방향(v > cur)으로 움직이는 경우
+```
+else if ( v > cur ) // 순방향 움직임일 때
+	tmp = max(tmp, dp(v, cnt) + cost);
+```
+
+코드
+- 처음에는 파이썬으로 풀어보려 했으나 계속해서 시간초과가 떠서 같은 로직으로 c++로 짜서 통과
+
+- 입력 변수 중 최대값이 $t <= 10^9$여서 int로 했으나 시간초과 뜸
+
+- 모든 입력변수 타입을 long long으로 바꾸니 통과됨
+
+```
+#include <iostream>
+#include <vector>
+#include <cstring>
+using namespace std;
+#define ll long long
+const int MAX = 100001;
+const ll INF = 1e16;
+
+ll N, M, K, S, T;
+ll ans = -1;
+ll d[MAX][11];
+vector<pair<int,int>> v[MAX];
+
+ll dp(int cur, int cnt);
+
+int main(void){
+    ios::sync_with_stdio(false);
+    cin.tie(0); cout.tie(0);
+    memset(d, -1, sizeof(d));
+    
+    cin >> N >> M >> K >> S >> T;
+    
+    for (int i = 0; i < M; i++){
+        int a, b, t;
+        cin >> a >> b >> t;
+        v[a].push_back(make_pair(b,t));
+        v[b].push_back(make_pair(a,t));
+    }
+    ans = dp(S, 0);
+    if (ans < 0)
+        cout << -1;
+    else
+        cout << ans;
+}
+
+ll dp(int cur, int cnt){
+    if ( cnt > K ) return -(INF); // 리프트 이용 최대횟수 초과
+    if (cnt == K && cur == T) return 0; // 리프트 이용 최대횟수이며 현재 위치가 도착지점일 때
+    
+    ll& tmp = d[cur][cnt];
+    
+    if (tmp != -1) return tmp;
+    
+    tmp = -(INF);
+    
+    for (auto e:v[cur]){
+        int v, cost;
+        v = e.first; cost = e.second;
+        if (cnt < K && v < cur) // 리프트 이용 가능 and 역방향 움직임일 때
+            tmp = max(tmp, dp(v, cnt + 1));
+        else if ( v > cur ) // 순방향 움직임일 때
+            tmp = max(tmp, dp(v, cnt) + cost);
+    }
+    return tmp;
+}
+```
